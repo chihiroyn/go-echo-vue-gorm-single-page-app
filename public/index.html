@@ -1,13 +1,13 @@
 <html>
     <head>
         <!-- Vue.js -->
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.24/vue.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/0.7.0/vue-resource.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     </head>
     <body>
-        <div>
+        <div id="top">
             <h1>Hello Vue.js</h1>
-            <button v-on:click="showTask">タスクを表示する。</button>
+            <button @click="showTask">タスクを表示する。</button>
             <ul>
                 <li v-for="task in tasks">
                     {{ task.name }}
@@ -16,7 +16,7 @@
         </div>
         <script>
             new Vue({
-                el: 'body',
+                el: '#top',
 
                 data: {
                     tasks: [],
@@ -24,10 +24,11 @@
 
                 methods: {
                   showTask: function() {
-                      // Use the vue-resource $http client to fetch data from the /tasks route
-                      this.$http.get('/tasks').then(function(response) {
-                          this.tasks = response.data.items ? response.data.items : []
-                      })
+                      axios.get('/tasks').then(res => {
+                          this.tasks = res.data.items || [];
+                      }).catch(function (error) {
+                          console.log(error);
+                      });
                   },
                 }
             })

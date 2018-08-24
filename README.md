@@ -1,12 +1,10 @@
-# Go TODO
+# Go + Echo + Vue.js 最小限の手間でSPAへの第一歩！
+https://qiita.com/K-juju/items/f6d0eedb9aee5714cb73
 
-This is a simple todo web app written in Go and using the Echo Framework
-
-Just run the folowing
+SPAのサンプルです。
 
 ```
 go get github.com/labstack/echo
-go get github.com/mattn/go-sqlite3
 go run todo.go
 ```
 

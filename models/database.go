@@ -2,6 +2,8 @@ package models
 
 import (
 	"github.com/jinzhu/gorm"
+	// to connect to SQLite database
+	_ "github.com/jinzhu/gorm/dialects/sqlite"
 )
 
 var db *gorm.DB

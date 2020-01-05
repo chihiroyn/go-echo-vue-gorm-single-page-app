@@ -3,9 +3,11 @@ package main
 import (
 	"github.com/ShingoYadomoto/go-echo-vue-single-page-app/handlers"
 	"github.com/labstack/echo"
+	"go-echo-vue-gorm-single-page-app/models"
 )
 
 func main() {
+	models.InitDB()
 
 	e := echo.New()
 

@@ -1,8 +1,11 @@
 package models
 
+import "github.com/jinzhu/gorm"
+
 // Task is a struct containing Task data
 type Task struct {
-	ID   int    `json:"id"`
+//	ID   int    `json:"id"`
+	gorm.Model
 	Name string `json:"name"`
 }
 
@@ -11,13 +14,13 @@ type TaskCollection struct {
 	Tasks []Task `json:"items"`
 }
 
-// GetTasks
+// GetTasks returns all tasks in database as TaskCollection
 func GetTasks() (tc TaskCollection) {
+	tasks := []Task{}
+	db.Find(&tasks)
+
 	tc = TaskCollection{
-		[]Task{
-			{1, "洗濯"},
-			{2, "掃除"},
-		},
+		Tasks: tasks,
 	}
 
 	return
